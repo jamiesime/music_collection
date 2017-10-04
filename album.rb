@@ -1,5 +1,10 @@
+require_relative 'sql_runner.rb'
+require_relative 'artist.rb'
 
 class Album
+
+  attr_accessor :title, :genre, :artist_id
+  attr_reader :id
 
   def initialize(info)
     @id = info['id'].to_i if ['id']
@@ -14,6 +19,13 @@ class Album
     values = [@title, @genre, @artist_id]
     result = SqlRunner.run(sql, "save_album", values)
     @id = result[0]['id'].to_i
+  end
+
+  def self.list_all()
+    sql = "SELECT * FROM artists;"
+    values = []
+    result = SqlRunner.run(sql, "list_all", values)
+    return result[0]
   end
 
 

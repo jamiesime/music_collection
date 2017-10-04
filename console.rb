@@ -2,6 +2,8 @@ require 'pry'
 require_relative 'artist.rb'
 require_relative 'album.rb'
 
+Album.delete_all()
+Artist.delete_all()
 
 artist1 = Artist.new({
   'name' => 'Tatsuro Yamashita'
